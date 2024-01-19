@@ -17,6 +17,11 @@ function App() {
     setToDoListCard([...toDoListCard, newToDoList]);
   };
 
+  const deleteCard = (id) => {
+    const deleteToDoList = toDoListCard.filter((todo) => todo.id !== id);
+    setToDoListCard(deleteToDoList);
+  };
+
   return (
     <div>
       <input
@@ -36,11 +41,16 @@ function App() {
         }}
       ></input>
       <button onClick={submitChange}>추가해</button>
-      {toDoListCard.map((todo) => (
-        <div key={todo.id}>
-          <p>{`제목: ${todo.toDoTitle}, 내용: ${todo.toDoContent}`}</p>
-        </div>
-      ))}
+
+      {toDoListCard.map((todo) => {
+        return (
+          <div key={todo.id}>
+            {todo.toDoTitle} - {todo.toDoContent}
+            <button onClick={() => deleteCard(todo.id)}>삭제</button>
+            <button>완료</button>
+          </div>
+        );
+      })}
     </div>
   );
 }

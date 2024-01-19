@@ -3,7 +3,8 @@ import { useState } from "react";
 
 function App() {
   const [toDoListCard, setToDoListCard] = useState([
-    { id: 1, toDoTitle: "임의", toDoContent: "야호" },
+    { id: 0, toDoTitle: "임의", toDoContent: "false 입니다", done: false },
+    { id: 1, toDoTitle: "임의", toDoContent: "true 입니다", done: true },
   ]);
   const [toDoContent, setTodoContent] = useState("");
   const [toDoTitle, setToDoTitle] = useState("");
@@ -13,6 +14,7 @@ function App() {
       id: toDoListCard.length + 1,
       toDoTitle: toDoTitle,
       toDoContent: toDoContent,
+      done: false,
     };
     setToDoListCard([...toDoListCard, newToDoList]);
   };
@@ -20,6 +22,17 @@ function App() {
   const deleteCard = (id) => {
     const deleteToDoList = toDoListCard.filter((todo) => todo.id !== id);
     setToDoListCard(deleteToDoList);
+  };
+
+  //NOTE - isDone 함수 이거 그냥 네이버에서 찾아서 한거임.. true false 바꾸는 부분..
+  const isDone = (id) => {
+    const isDoneToDoList = toDoListCard.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, done: !todo.done };
+      }
+      return todo;
+    });
+    setToDoListCard(isDoneToDoList);
   };
 
   return (
@@ -41,18 +54,45 @@ function App() {
         }}
       ></input>
       <button onClick={submitChange}>추가해</button>
-
       {toDoListCard.map((todo) => {
-        return (
-          <div key={todo.id}>
-            {todo.toDoTitle} - {todo.toDoContent}
-            <button onClick={() => deleteCard(todo.id)}>삭제</button>
-            <button>완료</button>
-          </div>
-        );
+        if (todo.done === false) {
+          return (
+            <div key={todo.id}>
+              {todo.toDoTitle} - {todo.toDoContent}
+              <button onClick={() => deleteCard(todo.id)}>삭제</button>
+              <button onClick={() => isDone(todo.id)}>
+                {todo.done ? "취소" : "완료"}
+              </button>
+            </div>
+          );
+        }
+      })}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      완료함
+      {toDoListCard.map((todo) => {
+        if (todo.done === true) {
+          return (
+            <div key={todo.id}>
+              {todo.toDoTitle} - {todo.toDoContent}
+              <button onClick={() => deleteCard(todo.id)}>삭제</button>
+              <button onClick={() => isDone(todo.id)}>
+                {todo.done ? "취소" : "완료"}
+              </button>
+            </div>
+          );
+        }
       })}
     </div>
   );
 }
 
 export default App;
+
+//NOTE - 진행, 완료를 나누는 방법.
+// 완료가 됐는지 안됐는지 불리언 값을 넣어놓고 if문으로 true는 진행중, false는 완료
+
+//FIXME - 컴포넌트 나누기,,,, 이거 이상하게 <br /> 이게 아니라 컴포넌트로 해야할 것 같은데,,

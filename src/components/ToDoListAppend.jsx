@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareGithub } from '@fortawesome/free-brands-svg-icons';
+
 export default function ToDoListAppend(props) {
   return (
     <div className="wrap">
@@ -32,6 +35,7 @@ export default function ToDoListAppend(props) {
         return todo.done;
       })
       .map((todo) => props.TempToDoCards(todo))}
+      <footer className="footer"><FontAwesomeIcon icon={faSquareGithub} /></footer>
   </div>
   )
 }

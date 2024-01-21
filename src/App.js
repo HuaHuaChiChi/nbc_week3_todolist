@@ -35,6 +35,18 @@ function App() {
     setToDoListCard(isDoneToDoList);
   };
 
+  const tempToDoCards = (todo) => {
+    return (
+      <div key={todo.id}>
+        {todo.toDoTitle} - {todo.toDoContent}
+        <button onClick={() => deleteCard(todo.id)}>삭제</button>
+        <button onClick={() => isDone(todo.id)}>
+          {todo.done ? "취소" : "완료"}
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div>
       <input
@@ -54,26 +66,22 @@ function App() {
         }}
       ></input>
       <button onClick={submitChange}>추가해</button>
-      {toDoListCard.map((todo) => {
-        if (todo.done === false) {
-          return (
-            <div key={todo.id}>
-              {todo.toDoTitle} - {todo.toDoContent}
-              <button onClick={() => deleteCard(todo.id)}>삭제</button>
-              <button onClick={() => isDone(todo.id)}>
-                {todo.done ? "취소" : "완료"}
-              </button>
-            </div>
-          );
-        }
-      })}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      완료함
-      {toDoListCard.map((todo) => {
+
+      <h2>해야해</h2>
+      {toDoListCard
+        .filter((todo) => {
+          return !todo.done;
+        })
+        .map((todo) => tempToDoCards(todo))}
+
+      <h2>완료함</h2>
+      {toDoListCard
+        .filter((todo) => {
+          return todo.done;
+        })
+        .map((todo) => tempToDoCards(todo))}
+
+      {/* {toDoListCard.map((todo) => {
         if (todo.done === true) {
           return (
             <div key={todo.id}>
@@ -85,7 +93,7 @@ function App() {
             </div>
           );
         }
-      })}
+      })} */}
     </div>
   );
 }

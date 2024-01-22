@@ -7,14 +7,133 @@
   min-width: 800px;
   margin: 0 auto;
   text-align: center;
+  background-color: #e1f0da;
+  border-radius: 10px;
 }
 
 .footer {
+  max-width: 1200px;
+  min-width: 800px;
   width: 100%;
-  bottom: 15px;
+  bottom: 0;
   margin: 0 auto;
-  text-align: right;
+  text-align: center;
   position: fixed;
-  right: 15px;
-  /* padding: 20px 0; */
+  padding: 20px 0;
+  background-color: #e1f0da;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  font-size: 35px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: #e1f0da;
+  color: #425935;
+}
+
+header > p {
+  margin: 0 20px;
+}
+
+input {
+  height: 35px;
+  width: 250px;
+}
+
+.inputButton {
+  height: 35px;
+  width: 60px;
+  border-radius: 5px;
+  background-color: #d4e7c5;
+  border: none;
+}
+
+.cardList {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/*FIXME - 카드 리스트 오른쪽 공백 킹받는다 하단 하얀부분도, 푸터는 잘 붙었나*/
+
+.cards {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  background-color: #aabf9a;
+  height: 130px;
+  width: 200px;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.cards > p {
+  font-size: 20px;
+  color: #34463c;
+}
+
+.cardButton {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 5px;
+  background-color: transparent;
+}
+
+.cardButton > button {
+  margin-bottom: 5px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-size: 17px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.inputHeader {
+  background-color: #e1f0da;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputTitle {
+  color: #617d51;
+  font-size: 25px;
+}
+
+.input {
+  border-radius: 5px;
+  background-color: #e1f0da;
+  border-color: #617d51;
+}
+
+.isDone {
+  color: #425935;
+  border-top: #617d51 solid;
+}
+
+.done {
+  color: #425935;
+  border-top: #617d51 solid;
+}
+
+.cardsTitle {
+  margin: 3px 0px;
 }

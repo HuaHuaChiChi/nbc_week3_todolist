@@ -3,8 +3,8 @@ import { useState } from "react";
 
 export default function ToDoListContainer() {
   const [toDoListCard, setToDoListCard] = useState([
-    { id: 0, toDoTitle: "임의", toDoContent: "false 입니다", done: false },
-    { id: 1, toDoTitle: "임의", toDoContent: "true 입니다", done: true },
+    // { id: 0, toDoTitle: "임의", toDoContent: "false 입니다", done: false },
+    // { id: 1, toDoTitle: "임의", toDoContent: "true 입니다", done: true },
   ]);
   const [toDoContent, setTodoContent] = useState("");
   const [toDoTitle, setToDoTitle] = useState("");
@@ -66,3 +66,5 @@ export default function ToDoListContainer() {
     />
   )
 }
+
+//FIXME - 폼태그 작성시 초기화 

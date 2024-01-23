@@ -9,6 +9,7 @@ export default function ToDoListContainer() {
   const [toDoContent, setTodoContent] = useState("");
   const [toDoTitle, setToDoTitle] = useState("");
 
+  //FIXME - id 중복요소 수정 필요
   const submitChange = () => {
     const newToDoList = {
       id: toDoListCard.length + 1,

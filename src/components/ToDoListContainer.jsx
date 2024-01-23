@@ -3,8 +3,8 @@ import { useState } from "react";
 
 export default function ToDoListContainer() {
   const [toDoListCard, setToDoListCard] = useState([
-    { id: 0, toDoTitle: "임의", toDoContent: "false 입니다", done: false },
-    { id: 1, toDoTitle: "임의", toDoContent: "true 입니다", done: true },
+    // { id: 0, toDoTitle: "임의", toDoContent: "false 입니다", done: false },
+    // { id: 1, toDoTitle: "임의", toDoContent: "true 입니다", done: true },
   ]);
   const [toDoContent, setTodoContent] = useState("");
   const [toDoTitle, setToDoTitle] = useState("");
@@ -37,13 +37,18 @@ export default function ToDoListContainer() {
 
   const tempToDoCards = (todo) => {
     return (
-      <div key={todo.id}>
-        {todo.toDoTitle} - {todo.toDoContent}
-        <button onClick={() => deleteCard(todo.id)}>삭제</button>
-        <button onClick={() => isDone(todo.id)}>
-          {todo.done ? "취소" : "완료"}
-        </button>
-      </div>
+        <div className="cards" key={todo.id}>
+        <p className="cardsTitle">{todo.toDoTitle}</p>
+        <p>{todo.toDoContent}</p>
+        <div className="cardButton">
+          <button onClick={() => deleteCard(todo.id)}>삭제</button>
+          <button onClick={() => isDone(todo.id)}>
+            {todo.done ? "취소" : "완료"}
+          </button>
+        </div>  
+        
+        </div>
+
     );
   };
 
@@ -61,3 +66,5 @@ export default function ToDoListContainer() {
     />
   )
 }
+
+//FIXME - 폼태그 작성시 초기화 
